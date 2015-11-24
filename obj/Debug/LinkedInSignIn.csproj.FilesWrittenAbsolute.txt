@@ -1,0 +1,5 @@
+/Users/luigi.saggese/Projects/LinkedInSignIn/obj/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/luigi.saggese/Projects/LinkedInSignIn/bin/Debug/LinkedInSignIn.dll.mdb
+/Users/luigi.saggese/Projects/LinkedInSignIn/bin/Debug/LinkedInSignIn.dll
+/Users/luigi.saggese/Projects/LinkedInSignIn/obj/Debug/LinkedInSignIn.dll
+/Users/luigi.saggese/Projects/LinkedInSignIn/obj/Debug/LinkedInSignIn.dll.mdb
