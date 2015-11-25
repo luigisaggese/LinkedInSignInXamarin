@@ -170,9 +170,9 @@ namespace ObjCRuntime {
 			[MonoPInvokeCallback (typeof (DActionArity1V0))]
 			static unsafe void Invoke (IntPtr block, IntPtr obj) {
 				var descriptor = (BlockLiteral *) block;
-				var del = (global::System.Action<global::LinkedIn.SignIn.LISDKAPIResponse>) (descriptor->Target);
+				var del = (global::System.Action<global::LinkedIn.SignIn.ApiResponse>) (descriptor->Target);
 				if (del != null)
-					del ( Runtime.GetNSObject<LinkedIn.SignIn.LISDKAPIResponse> (obj));
+					del ( Runtime.GetNSObject<LinkedIn.SignIn.ApiResponse> (obj));
 			}
 		} /* class SDActionArity1V0 */
 		
@@ -194,12 +194,12 @@ namespace ObjCRuntime {
 			}
 			
 			[Preserve (Conditional=true)]
-			public unsafe static global::System.Action<global::LinkedIn.SignIn.LISDKAPIResponse> Create (IntPtr block)
+			public unsafe static global::System.Action<global::LinkedIn.SignIn.ApiResponse> Create (IntPtr block)
 			{
 				if (block == IntPtr.Zero)
 					return null;
 				if (BlockLiteral.IsManagedBlock (block)) {
-					var existing_delegate = ((BlockLiteral *) block)->Target as global::System.Action<global::LinkedIn.SignIn.LISDKAPIResponse>;
+					var existing_delegate = ((BlockLiteral *) block)->Target as global::System.Action<global::LinkedIn.SignIn.ApiResponse>;
 					if (existing_delegate != null)
 						return existing_delegate;
 				}
@@ -207,7 +207,7 @@ namespace ObjCRuntime {
 			}
 			
 			[Preserve (Conditional=true)]
-			unsafe void Invoke (global::LinkedIn.SignIn.LISDKAPIResponse obj)
+			unsafe void Invoke (global::LinkedIn.SignIn.ApiResponse obj)
 			{
 				invoker (blockPtr, obj == null ? IntPtr.Zero : obj.Handle);
 			}
@@ -225,9 +225,9 @@ namespace ObjCRuntime {
 			[MonoPInvokeCallback (typeof (DActionArity1V1))]
 			static unsafe void Invoke (IntPtr block, IntPtr obj) {
 				var descriptor = (BlockLiteral *) block;
-				var del = (global::System.Action<global::LinkedIn.SignIn.LISDKAPIError>) (descriptor->Target);
+				var del = (global::System.Action<global::LinkedIn.SignIn.ApiError>) (descriptor->Target);
 				if (del != null)
-					del ( Runtime.GetNSObject<LinkedIn.SignIn.LISDKAPIError> (obj));
+					del ( Runtime.GetNSObject<LinkedIn.SignIn.ApiError> (obj));
 			}
 		} /* class SDActionArity1V1 */
 		
@@ -249,12 +249,12 @@ namespace ObjCRuntime {
 			}
 			
 			[Preserve (Conditional=true)]
-			public unsafe static global::System.Action<global::LinkedIn.SignIn.LISDKAPIError> Create (IntPtr block)
+			public unsafe static global::System.Action<global::LinkedIn.SignIn.ApiError> Create (IntPtr block)
 			{
 				if (block == IntPtr.Zero)
 					return null;
 				if (BlockLiteral.IsManagedBlock (block)) {
-					var existing_delegate = ((BlockLiteral *) block)->Target as global::System.Action<global::LinkedIn.SignIn.LISDKAPIError>;
+					var existing_delegate = ((BlockLiteral *) block)->Target as global::System.Action<global::LinkedIn.SignIn.ApiError>;
 					if (existing_delegate != null)
 						return existing_delegate;
 				}
@@ -262,7 +262,7 @@ namespace ObjCRuntime {
 			}
 			
 			[Preserve (Conditional=true)]
-			unsafe void Invoke (global::LinkedIn.SignIn.LISDKAPIError obj)
+			unsafe void Invoke (global::LinkedIn.SignIn.ApiError obj)
 			{
 				invoker (blockPtr, obj == null ? IntPtr.Zero : obj.Handle);
 			}
