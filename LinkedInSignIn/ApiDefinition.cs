@@ -62,7 +62,7 @@ namespace LinkedIn.SignIn
 		// +(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 		[Static]
 		[Export("application:openURL:sourceApplication:annotation:")]
-		bool Application(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation);
+		bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation);
 
 		// +(BOOL)shouldHandleUrl:(NSURL *)url;
 		[Static]
@@ -81,7 +81,7 @@ namespace LinkedIn.SignIn
 		// +(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
 		[Static]
 		[Export("application:openURL:sourceApplication:annotation:")]
-		bool Application(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation);
+		bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation);
 	}
 
 	[BaseType(typeof(NSObject), Name = "LISDKAPIResponse")]
@@ -211,4 +211,31 @@ namespace LinkedIn.SignIn
 		string Value { get; }
 	}
 
+	// @interface LISDKDeeplinkHelper
+	[BaseType(typeof(NSObject), Name = "LISDKDeeplinkHelper")]
+	interface DeeplinkHelper
+	{
+		// +(instancetype)sharedInstance;
+		[Static]
+		[Export("sharedInstance")]
+		DeeplinkHelper SharedInstance { get; }
+
+		// -(void)viewCurrentProfileWithState:(NSString *)state showGoToAppStoreDialog:(BOOL)showDialog success:(DeeplinkSuccessBlock)success error:(DeeplinkErrorBlock)error;
+		[Export("viewCurrentProfileWithState:showGoToAppStoreDialog:success:error:")]
+		void ViewCurrentProfile(string state, bool showDialog, DeeplinkSuccessBlock success, DeeplinkErrorBlock error);
+
+		// - (void)viewOtherProfile:(NSString *)memberId withState:(NSString *)state showGoToAppStoreDialog:(BOOL)showDialog success:(DeeplinkSuccessBlock)success error:(DeeplinkErrorBlock)error
+		[Export("viewOtherProfile:withState:showGoToAppStoreDialog:success:error:")]
+		void ViewOtherProfile(string memberId, string state, bool showDialog, DeeplinkSuccessBlock success, DeeplinkErrorBlock error);
+
+		// + (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation;
+		[Static]
+		[Export("application:openURL:sourceApplication:annotation:")]
+		bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation);
+
+		// + (BOOL)shouldHandleUrl:(NSURL *)url;
+		[Static]
+		[Export("shouldHandleUrl:")]
+		bool ShouldHandleUrl(NSUrl url);
+	}
 }
