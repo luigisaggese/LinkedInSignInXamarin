@@ -13,10 +13,10 @@ namespace LinkedIn.SignIn
 	delegate void AuthErrorBlock(NSError arg0);
 
 	// typedef void (^APISuccessBlock)(LISDKAPIResponse *);
-	delegate void APISuccessBlock(LISDKAPIResponse arg0);
+	delegate void ApiSuccessBlock(ApiResponse arg0);
 
 	// typedef void (^APIErrorBlock)(LISDKAPIResponse *, NSError *);
-	delegate void APIErrorBlock(LISDKAPIResponse arg0, NSError arg1);
+	delegate void ApiErrorBlock(ApiResponse arg0, NSError arg1);
 
 	// typedef void (^DeeplinkSuccessBlock)(NSString *);
 	delegate void DeeplinkSuccessBlock(string arg0);
@@ -25,32 +25,28 @@ namespace LinkedIn.SignIn
 	delegate void DeeplinkErrorBlock(NSError arg0, string arg1);
 
 
-
-	// typedef void (^APIErrorBlock)(LISDKAPIResponse *, NSError *);
-
 	// @interface LISDKSessionManager : NSObject
-	[BaseType(typeof(NSObject))]
-	interface LISDKSessionManager
+	[BaseType(typeof(NSObject), Name = "LISDKSessionManager")]
+	interface SessionManager
 	{
 		// +(instancetype)sharedInstance;
 		[Static]
 		[Export("sharedInstance")]
-		LISDKSessionManager SharedInstance();
+		SessionManager SharedInstance { get; }
 
 		// @property (readonly, nonatomic) LISDKSession * session;
 		[Export("session")]
-		LISDKSession Session { get; }
+		Session Session { get; }
 
 		// +(void)createSessionWithAuth:(NSArray *)permissions state:(NSString *)state showGoToAppStoreDialog:(BOOL)showDialog successBlock:(AuthSuccessBlock)successBlock errorBlock:(AuthErrorBlock)erroBlock;
 		[Static]
 		[Export("createSessionWithAuth:state:showGoToAppStoreDialog:successBlock:errorBlock:")]
-		//[Verify (StronglyTypedNSArray)]
-		void CreateSessionWithAuth(string [] permissions, string state, bool showDialog, AuthSuccessBlock successBlock, AuthErrorBlock erroBlock);
+		void CreateSession(string [] permissions, string state, bool showDialog, AuthSuccessBlock successBlock, AuthErrorBlock erroBlock);
 
 		// +(void)createSessionWithAccessToken:(LISDKAccessToken *)accessToken;
 		[Static]
 		[Export("createSessionWithAccessToken:")]
-		void CreateSessionWithAccessToken(LISDKAccessToken accessToken);
+		void CreateSession(AccessToken accessToken);
 
 		// +(void)clearSession;
 		[Static]
@@ -74,8 +70,8 @@ namespace LinkedIn.SignIn
 		bool ShouldHandleUrl(NSUrl url);
 	}
 	// @interface LISDKCallbackHandler : NSObject
-	[BaseType(typeof(NSObject))]
-	interface LISDKCallbackHandler
+	[BaseType(typeof(NSObject), Name = "LISDKCallbackHandler")]
+	interface CallbackHandler
 	{
 		// +(BOOL)shouldHandleUrl:(NSURL *)url;
 		[Static]
@@ -88,8 +84,8 @@ namespace LinkedIn.SignIn
 		bool Application(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation);
 	}
 
-	[BaseType(typeof(NSObject))]
-	interface LISDKAPIResponse
+	[BaseType(typeof(NSObject), Name = "LISDKAPIResponse")]
+	interface ApiResponse
 	{
 		// @property (readonly, nonatomic) NSString * data;
 		[Export("data")]
@@ -110,41 +106,41 @@ namespace LinkedIn.SignIn
 
 
 	// @interface LISDKAPIHelper : NSObject
-	[BaseType(typeof(NSObject))]
-	interface LISDKAPIHelper
+	[BaseType(typeof(NSObject), Name = "LISDKAPIHelper")]
+	interface ApiHelper
 	{
 		// +(instancetype)sharedInstance;
 		[Static]
 		[Export("sharedInstance")]
-		LISDKAPIHelper SharedInstance();
+		ApiHelper SharedInstance { get; }
 
 		// -(void)getRequest:(NSString *)url success:(void (^)(LISDKAPIResponse *))success error:(void (^)(LISDKAPIError *))error;
 		[Export("getRequest:success:error:")]
-		void GetRequest(string url, Action<LISDKAPIResponse> success, Action<LISDKAPIError> error);
+		void GetRequest(string url, Action<ApiResponse> success, Action<ApiError> error);
 
 		// -(void)deleteRequest:(NSString *)url success:(void (^)(LISDKAPIResponse *))successCompletion error:(void (^)(LISDKAPIError *))errorCompletion;
 		[Export("deleteRequest:success:error:")]
-		void DeleteRequest(string url, Action<LISDKAPIResponse> successCompletion, Action<LISDKAPIError> errorCompletion);
+		void DeleteRequest(string url, Action<ApiResponse> successCompletion, Action<ApiError> errorCompletion);
 
 		// -(void)putRequest:(NSString *)url body:(NSData *)body success:(void (^)(LISDKAPIResponse *))successCompletion error:(void (^)(LISDKAPIError *))errorCompletion;
 		[Export("putRequest:body:success:error:")]
-		void PutRequest(string url, NSData body, Action<LISDKAPIResponse> successCompletion, Action<LISDKAPIError> errorCompletion);
+		void PutRequest(string url, NSData body, Action<ApiResponse> successCompletion, Action<ApiError> errorCompletion);
 
 		// -(void)putRequest:(NSString *)url stringBody:(NSString *)stringBody success:(void (^)(LISDKAPIResponse *))successCompletion error:(void (^)(LISDKAPIError *))errorCompletion;
 		[Export("putRequest:stringBody:success:error:")]
-		void PutRequest(string url, string stringBody, Action<LISDKAPIResponse> successCompletion, Action<LISDKAPIError> errorCompletion);
+		void PutRequest(string url, string stringBody, Action<ApiResponse> successCompletion, Action<ApiError> errorCompletion);
 
 		// -(void)postRequest:(NSString *)url body:(NSData *)body success:(void (^)(LISDKAPIResponse *))successCompletion error:(void (^)(LISDKAPIError *))errorCompletion;
 		[Export("postRequest:body:success:error:")]
-		void PostRequest(string url, NSData body, Action<LISDKAPIResponse> successCompletion, Action<LISDKAPIError> errorCompletion);
+		void PostRequest(string url, NSData body, Action<ApiResponse> successCompletion, Action<ApiError> errorCompletion);
 
 		// -(void)postRequest:(NSString *)url stringBody:(NSString *)stringBody success:(void (^)(LISDKAPIResponse *))successCompletion error:(void (^)(LISDKAPIError *))errorCompletion;
 		[Export("postRequest:stringBody:success:error:")]
-		void PostRequest(string url, string stringBody, Action<LISDKAPIResponse> successCompletion, Action<LISDKAPIError> errorCompletion);
+		void PostRequest(string url, string stringBody, Action<ApiResponse> successCompletion, Action<ApiError> errorCompletion);
 
 		// -(void)apiRequest:(NSString *)url method:(NSString *)method body:(NSData *)body success:(void (^)(LISDKAPIResponse *))successCompletion error:(void (^)(LISDKAPIError *))errorCompletion;
 		[Export("apiRequest:method:body:success:error:")]
-		void ApiRequest(string url, string method, NSData body, Action<LISDKAPIResponse> successCompletion, Action<LISDKAPIError> errorCompletion);
+		void ApiRequest(string url, string method, NSData body, Action<ApiResponse> successCompletion, Action<ApiError> errorCompletion);
 
 		// -(void)cancelCalls;
 		[Export("cancelCalls")]
@@ -152,8 +148,8 @@ namespace LinkedIn.SignIn
 	}
 
 	// @interface LISDKAccessToken : NSObject
-	[BaseType(typeof(NSObject))]
-	interface LISDKAccessToken
+	[BaseType(typeof(NSObject), Name = "LISDKAccessToken")]
+	interface AccessToken
 	{
 		// @property (readonly, nonatomic) NSString * accessTokenValue;
 		[Export("accessTokenValue")]
@@ -166,12 +162,12 @@ namespace LinkedIn.SignIn
 		// +(instancetype)LISDKAccessTokenWithValue:(NSString *)value expiresOnMillis:(long long)expiresOnMillis;
 		[Static]
 		[Export("LISDKAccessTokenWithValue:expiresOnMillis:")]
-		LISDKAccessToken LISDKAccessTokenWithValue(string value, long expiresOnMillis);
+		AccessToken FromValue(string value, long expiresOnMillis);
 
 		// +(instancetype)LISDKAccessTokenWithSerializedString:(NSString *)serString;
 		[Static]
 		[Export("LISDKAccessTokenWithSerializedString:")]
-		LISDKAccessToken LISDKAccessTokenWithSerializedString(string serString);
+		AccessToken FromSerializedString(string serString);
 
 		// -(NSString *)serializedString;
 		[Export("serializedString")]
@@ -179,31 +175,30 @@ namespace LinkedIn.SignIn
 		string SerializedString { get; }
 	}
 
-	[BaseType(typeof(NSError))]
-	interface LISDKAPIError
+	[BaseType(typeof(NSError), Name = "LISDKAPIError")]
+	interface ApiError
 	{
 		// -(LISDKAPIResponse *)errorResponse;
 		[Export("errorResponse")]
-		//[Verify (MethodToProperty)]
-		LISDKAPIResponse ErrorResponse { get; }
+		ApiResponse ErrorResponse { get; }
 
 		// +(id)errorWithApiResponse:(LISDKAPIResponse *)response;
 		[Static]
 		[Export("errorWithApiResponse:")]
-		NSObject ErrorWithApiResponse(LISDKAPIResponse response);
+		ApiError FromApiResponse(ApiResponse response);
 
 		// +(id)errorWithError:(NSError *)error;
 		[Static]
 		[Export("errorWithError:")]
-		NSObject ErrorWithError(NSError error);
+		ApiError FromError(NSError error);
 	}
 
-	[BaseType(typeof(NSObject))]
-	interface LISDKSession
+	[BaseType(typeof(NSObject), Name = "LISDKSession")]
+	interface Session
 	{
 		// @property (nonatomic, strong) LISDKAccessToken * accessToken;
 		[Export("accessToken", ArgumentSemantic.Strong)]
-		LISDKAccessToken AccessToken { get; set; }
+		AccessToken AccessToken { get; set; }
 
 		// -(BOOL)isValid;
 		[Export("isValid")]

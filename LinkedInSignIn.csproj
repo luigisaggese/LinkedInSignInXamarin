@@ -3,12 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4AAD2B4B-7EE7-4A63-A812-485A20CFB6FF}</ProjectGuid>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>LinkedInSignIn</RootNamespace>
+    <RootNamespace>LinkedIn.SignIn</RootNamespace>
     <AssemblyName>LinkedInSignIn</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
@@ -36,7 +34,6 @@
     <Reference Include="System" />
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
-
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
   </ItemGroup>
@@ -51,5 +48,6 @@
     <Compile Include="linkedin-sdk.linkwith.cs">
       <DependentUpon>linkedin-sdk</DependentUpon>
     </Compile>
+    <Compile Include="Additions.cs" />
   </ItemGroup>
 </Project>
