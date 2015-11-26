@@ -1,0 +1,29 @@
+id: LinkedInSignIn
+version: 1.0.4
+name: LinkedIn Sign In
+summary: Make it convenient for your users to sign in with their professional identity.
+
+publisher: Luigi Saggese
+publisher-url: https://twitter.com/luigisag
+src-url: https://github.com/luigisaggese/LinkedInSignInXamarin
+
+icons:
+  - icons/LinkedInSignIn_128x128.png
+  - icons/LinkedInSignIn_512x512.png
+screenshots:
+  - screenshots/01.png
+
+license: License.md
+details: Readme.md
+getting-started: Readme.md
+
+build: LinkedInSignIn/LinkedInSignIn.sln
+
+libraries:
+  ios-unified: LinkedInSignIn/bin/release/LinkedInSignIn.dll
+
+samples:
+  - name: "iOS Sample"
+    path:  LinkedInSignInSample/LinkedInSignInSample.sln
+    configuration: "iPhone|Release"
+

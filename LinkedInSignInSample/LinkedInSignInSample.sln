@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedInSignIn", "LinkedInSignIn\LinkedInSignIn.csproj", "{4AAD2B4B-7EE7-4A63-A812-485A20CFB6FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedInSignInSample", "LinkedInSignInSample.csproj", "{6E051CD4-D494-4F5D-9D87-C1DCBD0551FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedInSignInSample", "LinkedInSignInSample\LinkedInSignInSample.csproj", "{6E051CD4-D494-4F5D-9D87-C1DCBD0551FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedInSignIn", "..\LinkedInSignIn\LinkedInSignIn.csproj", "{4AAD2B4B-7EE7-4A63-A812-485A20CFB6FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
